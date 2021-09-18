@@ -15,19 +15,16 @@ const assertArraysEqual = (actual, expected) => {
 };
 
 const eqArrays = (firstArray, secondArray) => {
-  let result;
-  if (firstArray.length === secondArray.length) {
-    for (let i = 0; i < firstArray.length; i ++) {
-      for (let j = 0; j < secondArray.length; j++) {
-        if (firstArray[i] === secondArray[j]) {
-          result = true;
-        } else {
-          result = false;
-        }
-      }
+  if (firstArray.length !== secondArray.length) return false;
+  
+  for (let i = 0; i < firstArray.length; i++) {
+    firstArray, secondArray; //Added sort method
+    if (firstArray[i] !== secondArray[i]) {
+      return false;
     }
-    return result;
   }
+  
+  return true;
 };
 
 const letterPositions = function(sentence) {
@@ -44,7 +41,7 @@ const letterPositions = function(sentence) {
   return result;
 };
 console.log(letterPositions("lighthouse in the house"));
-console.log(eqArrays((letterPositions("hello")).h, [1]));
+console.log(eqArrays((letterPositions("hello")).h, [0]));
 console.log(eqArrays((letterPositions("hello")).e, [1]));
-console.log(eqArrays((letterPositions("hello")).l, [1]));
-console.log(eqArrays((letterPositions("hello")).o, [1]));
+console.log(eqArrays((letterPositions("hello")).l, [2, 3]));
+console.log(eqArrays((letterPositions("hello")).o, [4]));
