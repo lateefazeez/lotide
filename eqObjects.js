@@ -1,6 +1,6 @@
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
-    console.log(`❤️❤️❤️ Assertion Passed: [actual] === ${actual}`);
+    console.log(`❤️❤️❤️ Assertion Passed: [actual] === ${expected}`);
   } else {
     console.log(`✅✅✅ Assertion Failed: [actual] !== ${expected}`);
   }
@@ -32,10 +32,12 @@ const eqObjects = function(object1, object2) {
         //console.log(keyFrom2[i]);
         if (Array.isArray(keyValue1) && Array.isArray(keyValue2)) {
           eqArrays(keyValue1, keyValue2);
+        } else if (typeof(keyValue1) === "object" && typeof(keyValue2) === "object" && keyValue1 !== null && keyValue2 !== null && !Array.isArray(keyValue1) && !Array.isArray(keyValue2)) {
+          return eqObjects(keyValue1, keyValue2);
+        } else if (keyValue1 === keyValue2) {
+          return true;
         } else {
-          if (keyValue1 === keyValue2) {
-            return true;
-          }
+          return false;
         }
       }
     }
@@ -56,3 +58,8 @@ assertEqual(eqObjects(cd, dc), true); // => true
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
 assertEqual(eqObjects(cd, cd2), false); // => false
+
+console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => true
+
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })); // => false
