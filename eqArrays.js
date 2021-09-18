@@ -1,27 +1,24 @@
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
-    console.log(`❤️❤️❤️ Assertion Passed: [actual] === ${actual}`);
+    console.log(`❤️❤️❤️ Assertion Passed: [actual] === ${expected}`);
   } else {
     console.log(`✅✅✅ Assertion Failed: [actual] !== ${expected}`);
   }
 };
-assertEqual("Lighthouse Labs" , "Bootcamp");
-assertEqual(1, 1);
+// assertEqual("Lighthouse Labs" , "Bootcamp");
+// assertEqual(1, 1);
 
 const eqArrays = (firstArray, secondArray) => {
-  let result;
   if (firstArray.length === secondArray.length) {
-    for (let i = 0; i < firstArray.length; i ++) {
-      for (let j = 0; j < secondArray.length; j++) {
-        if (firstArray[i] === secondArray[j]) {
-          result = true;
-        } else {
-          result = false;
-        }
+    for (let i = 0; i < firstArray.length; i++) {
+      firstArray.sort(), secondArray.sort(); //Added sort method
+      if (firstArray[i] !== secondArray[i]) {
+        return false;
       }
+      
     }
-    return result;
   }
+  return true;
 };
 
 eqArrays([1, 2, 3], [1, 2, 3]); // => true
@@ -34,3 +31,4 @@ assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
 assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), true); // => should PASS
 assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => should PASS
 assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), true); // => should PASS
+
