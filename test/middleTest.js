@@ -1,5 +1,4 @@
 const middle = require("../middle");
-const eqArrays = require("../eqArrays");
 const { assert } = require("chai");
 
 // assertArraysEqual(eqArrays(middle([1, 2, 3]), [2]), true); // => true
