@@ -9,12 +9,12 @@ const { assert } = require("chai");
  
 describe("#middle", () => {
   it("returns true for [1, 2, 3]) and [2]", () => {
-    assert.strictEqual(eqArrays(middle([1, 2, 3]), [2]), true);
+    assert.deepEqual(middle([1, 2, 3]), [2]);
   });
   it("returns true for [1, 2, 3, 4, 5] and [3]", () => {
-    assert.strictEqual(eqArrays(middle([1, 2, 3, 4, 5]), [3]), true);
+    assert.deepEqual(middle([1, 2, 3, 4, 5]), [3]);
   });
   it("returns true for [1, 2, 3, 4] and [2, 3]", () => {
-    assert.strictEqual(eqArrays(middle([1, 2, 3, 4, 5]), [3]), true);
+    assert.deepEqual(middle([1, 2, 3, 4, 5]), [3]);
   });
 });
